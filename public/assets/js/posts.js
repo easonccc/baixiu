@@ -126,14 +126,14 @@ $('#filterForm').on('submit',function (e) {
     })
  */
     //阻止表单默认行为
-    e.preventDefault()
+    // e.preventDefault()
     let ob = serialzeObj($(this))
     console.log(ob);
     queryPost(ob,1)
     
 
     // //阻止表单默认行为
-    // return false
+    return false
 })
 
 //当点击编辑按钮时
@@ -149,4 +149,22 @@ $('#listUser').on('click','.articleEdit',function () {
         }
     }) 
 
+})
+
+//当点击删除按钮时
+$('#listUser').on('click','.articleDle',function () {
+    if(confirm('确认删除吗？')){
+        //获取编辑按钮上的自定义属性id
+        let id = $(this).siblings('.articleEdit').attr('data-id')
+        //向服务器发起请求
+        $.ajax({
+            url:'/posts/'+id,
+            type: 'delete',
+            success: function (data) {
+                console.log(data);
+                location.reload()
+            }
+        })
+        
+    }
 })

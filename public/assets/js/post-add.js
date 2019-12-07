@@ -96,7 +96,6 @@ $('#articleBox').on('submit','#articleEdit',function (e) {
             location.href = '/admin/posts.html'
         }
     })
-
     //阻止默认跳转行为
     e.preventDefault()
 })
