@@ -1,0 +1,26 @@
+关于formData和serialize方法的区别
+使用new FormData 在这个方法内部将contentType和processData已经设置了
+所以在发送ajax请求的时候需要将它们的属性设置为false
+
+serialize是jQuery里的一个方法 可以将表单里的内容都获取到 返回的是字符串
+
+将日期类型转换成想要的格式 封装函数
+//处理日期格式的函数
+function  formDate(date) {
+    //date是要处理的日期 是一个字符串类型
+    //需要将日期字符串转换成日期对象
+     newDate = new Date(date) 
+     //拼接字符串 并将其返回
+     return newDate.getFullYear()+'-'+(newDate.getMonth()+1)+'-'+newDate.getDate()
+
+}
+
+补0操作 通过String.prototype.padStart()方法
+        padStart()方法用另一个字符串填充当前字符串(重复，如果需要的话)，以便产生的字符串达到给定的长度。填充从当前字符串的开始(左侧)应用的
+    语法：
+        str.padStart(targetLength[,padStaring])
+    参数：targetLength
+            当前字符串需要填充到的目标长度 如果这个长度小于当前字符串的长度 则返回当前字符串本身
+          padStaring(可选)
+            填充字符串 如果这个字符串太长 使填充后的字符串超过了目标长度 则只保留最左侧的部分 其他部分会被截断
+    返回值：在原字符串开头填充指定的填充字符串知道目标长度所形成的新字符串
