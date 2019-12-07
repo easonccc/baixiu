@@ -1,4 +1,4 @@
-//页面一上来就向服务器端发送请求索要文章列表数据
+/* //页面一上来就向服务器端发送请求索要文章列表数据
 $.ajax({
     url:'/posts',
     type: 'get',
@@ -13,7 +13,7 @@ $.ajax({
         $('#listUser').html(html)
         $('#pagenation').html(pages)
     }
-})
+}) */
 
 //处理日期格式的函数
 function  formDate(date) {
@@ -62,16 +62,52 @@ $.ajax({
     url:'/categories',
     type:'get',
     success: function (data) {
-        console.log(data);
+        // console.log(data);//数组
         let html = template('classTpl',{data})
         // console.log(html);
         $('#classSlect').html(html)
     }
 })
 
+
+//查询文章的函数
+function queryPost(obj,page) {
+    obj.page = page || 1
+    $.ajax({
+        url:'/posts',
+        type: 'get',
+        data: obj,
+        success: function (parmas) {
+            // console.log(parmas);
+            //parmas是一个对象 但是我们查找的是这个parmas里面的一个数组 所以在下面模板中的第二个参数需要以对象形式传递
+            //拼接模板引擎
+            let html = template('listUserTpl',parmas)              
+            // console.log(html);
+            //拼接分页模板引擎
+            let pages = template('pageTpl',parmas)
+            $('#listUser').html(html)
+            $('#pagenation').html(pages)
+        }
+    })
+}
+
+//收集form数据的函数
+function serialzeObj(form) {
+    let arr = form.serializeArray()
+    let obj = {}
+    arr.forEach((item)=>{
+        obj[item.name] = item.value
+    })
+    return obj
+}
+
+
+queryPost({},1)
+
+
 //当用户提交筛选文章表单时
-$('#filterForm').on('submit',function () {
-    //获取到用户选择的信息
+$('#filterForm').on('submit',function (e) {
+/*     //获取到用户选择的信息
     let formData = $(this).serialize()
     // 向服务器端发送请求索要文章列表数据
     $.ajax({
@@ -90,8 +126,14 @@ $('#filterForm').on('submit',function () {
             $('#pagenation').html(pages)
         }
     })
-
-
+ */
     //阻止表单默认行为
-    return false
+    e.preventDefault()
+    let ob = serialzeObj($(this))
+    console.log(ob);
+    queryPost(ob,1)
+    
+
+    // //阻止表单默认行为
+    // return false
 })

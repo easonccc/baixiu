@@ -42,7 +42,7 @@ $('#addForm').on('submit',function(){
     // console.log(typeof(formData)); //string
     console.log(formData);
     
-  /*   $.ajax({
+    $.ajax({
         url:'/posts',
         type:'post',
         data:formData,
@@ -52,7 +52,7 @@ $('#addForm').on('submit',function(){
         error:function (err,val) {
             console.log(err);
         }
-    }) */
+    })
     //阻止表单默认行为
     return false
 })
