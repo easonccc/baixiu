@@ -114,8 +114,8 @@
         <td class="text-center">{{$imports.formDate($value.createAt)}}</td>
         <td class="text-center">{{$value.state ==1 ? '已发布': '草稿'}}</td>
         <td class="text-center">
-          <a href="javascript:;" class="btn btn-default btn-xs">编辑</a>
-          <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+          <a href="javascript:;" class="btn btn-default btn-xs articleEdit " data-id="{{$value._id}}">编辑</a>
+          <a href="javascript:;" class="btn btn-danger btn-xs articleDle">删除</a>
         </td>
       </tr>  
       {{/each}}

@@ -101,9 +101,7 @@ function serialzeObj(form) {
     return obj
 }
 
-
 queryPost({},1)
-
 
 //当用户提交筛选文章表单时
 $('#filterForm').on('submit',function (e) {
@@ -136,4 +134,19 @@ $('#filterForm').on('submit',function (e) {
 
     // //阻止表单默认行为
     // return false
+})
+
+//当点击编辑按钮时
+$('#listUser').on('click','.articleEdit',function () {
+    let id = $(this).attr('data-id')
+    console.log(id);
+    //发送服务器请求
+    $.ajax({
+        url:'/posts/'+id,
+        type:'put',
+        success: function (data) {
+            location.href= '/admin/post-add.html?id='+ id
+        }
+    }) 
+
 })
