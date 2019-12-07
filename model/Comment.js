@@ -40,9 +40,10 @@ const CommentSchema = new Schema({
 const Comment = mongoose.model('Comment', CommentSchema);
 //内置评论
 // Comment.create({
-// 	content:'应该快很多条来吧啦',
+// 	content:'z这个是状态为1的',
 // 	author:'5de8d8926f0bfd26d89a1753',
 // 	post:'5dea0f088578e40f18565043',
+// 	 state : 1
 // }).then(x => {
 // 	console.log('评论插入成功');
 // })
