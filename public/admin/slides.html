@@ -1,3 +1,7 @@
+<script src="/login/status"></script>
+<script>
+  if(!isLogin) location.href = 'login.html'
+</script>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -148,6 +152,7 @@
     <script>
       NProgress.done();
     </script>
+    <script src="../assets/js/common.js"></script>
     <!-- 列表渲染模块 -->
     <script type="text/html" id="imageListTpl">
       {{each data}}

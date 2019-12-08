@@ -34,3 +34,15 @@ function  formDate(date) {
    return newDate.getFullYear()+'-'+(newDate.getMonth()+1).toString().padStart(2,'0')+'-'+newDate.getDate().toString().padStart(2,'0')
 }
 
+
+//将用户信息展示在页面左侧
+$.ajax({
+  type: 'get',
+  url: '/users/'+ userId,
+  success: function (data) {
+    console.log(data);
+    //渲染数据至页面
+    $('.avatar').prop('src',data.avatar)
+    $('.name').html(data.nickName)
+  }
+})

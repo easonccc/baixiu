@@ -1,3 +1,7 @@
+<script src="/login/status"></script>
+<script>
+  if(!isLogin) location.href = 'login.html'
+</script>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -117,6 +121,7 @@
   <script src="../assets/vendors/bootstrap/js/bootstrap.js"></script>
   <script src="../assets/vendors/art-template/template-web.js"></script>
   <script src="../assets/js/post-add.js"></script>
+  <script src="../assets/js/common.js"></script>
   <script>NProgress.done()</script>
   <script type="text/html" id="categoryTpl">
     {{each data}}
