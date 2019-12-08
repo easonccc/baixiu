@@ -38,7 +38,7 @@ $.ajax({
     success: function (data) {
         console.log(data);
         let html = template('newPublishTpl',{data})
-        console.log(html);
+        // console.log(html);
         $('#newPublish').html(html)
     }
 })
