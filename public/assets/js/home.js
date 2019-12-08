@@ -30,3 +30,15 @@ $.ajax({
         })
     }
 })
+
+//获取最新发布数据
+$.ajax({
+    url: '/posts/lasted',
+    type: 'get',
+    success: function (data) {
+        console.log(data);
+        let html = template('newPublishTpl',{data})
+        console.log(html);
+        $('#newPublish').html(html)
+    }
+})
