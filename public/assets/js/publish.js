@@ -23,3 +23,31 @@ $.ajax({
         $('.random').html(html)
     }
 })
+
+//获取最新评论
+$.ajax({
+    url: '/comments/lasted',
+    type:'get',
+    success: function (data) {
+        console.log(data);
+        //在这个公共文件进行模板拼评论列表
+        let commentsTpl = `
+            {{each data}}
+            <li>
+            <a href="javascript:;">
+              <div class="avatar">
+                <img src="{{$value.author.avatar}}" alt="" />
+              </div>
+              <div class="txt">
+                <p><span>{{$value.author.nickName}}</span>{{$value.createAt.split('T')[0]}}说:</p>
+                <p>{{$value.content}}</p>
+              </div>
+            </a>
+          </li>
+          {{/each}}
+        `
+        // console.log(commentsTpl);
+        let html = template.render(commentsTpl,{data})
+        $('.discuz').html(html)
+    }
+})
