@@ -6,7 +6,7 @@ $.ajax({
         console.log(data);
         //将轮播图片渲染至页面
         let html = template('bannerTpl', { data })
-        console.log(html);
+        // console.log(html);
         $('#bannerWrapper').html(html)
         //
         var swiper = Swipe(document.querySelector('.swipe'), {
