@@ -3,7 +3,7 @@ $.ajax({
     url: '/posts/random',
     type: 'get',
     success: function (data) {
-        console.log(data);
+        // console.log(data);
         //在这个公共文件进行模板拼接
         let randomTpl = `
         {{each data}}
@@ -29,7 +29,7 @@ $.ajax({
     url: '/comments/lasted',
     type:'get',
     success: function (data) {
-        console.log(data);
+        // console.log(data);
         //在这个公共文件进行模板拼评论列表
         let commentsTpl = `
             {{each data}}
@@ -49,5 +49,25 @@ $.ajax({
         // console.log(commentsTpl);
         let html = template.render(commentsTpl,{data})
         $('.discuz').html(html)
+    }
+})
+
+//导航分类功能
+$.ajax({
+    url: '/categories',
+    type: 'get',
+    success: function (data) {
+      console.log(data);
+      //这个页面是响应式的 但是样式都一样 所以可以用一个模块
+      let navTpl = `
+        {{each data}}
+        <li>
+        <a href="list.html?categoryid={{$value._id}}"><i class="{{$value.className}}"></i>{{$value.title}}</a>
+      </li>
+        {{/each}}
+      `
+      let nav = template.render(navTpl,{data})
+      $('#topnav').html(nav)
+      $('.nav').html(nav)
     }
 })
